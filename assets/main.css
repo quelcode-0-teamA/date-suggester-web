@@ -1,0 +1,9 @@
+body {
+  font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
+}
+nuxt-link {
+  text-decoration: none;
+}
+@media screen and (max-width: 768px) {
+
+}
