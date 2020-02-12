@@ -1,9 +1,62 @@
 <template>
-  <v-app></v-app>
+  <v-app>
+    <v-container>
+      <v-form>
+        <v-text-field
+          v-model="user.email"
+          type="email"
+          outlined
+          label="your email"
+          prepend-inner-icon="mdi-email"
+          color="pink accent-2"
+        ></v-text-field>
+        <v-text-field
+          v-model="user.password"
+          type="password"
+          outlined
+          label="password"
+          prepend-inner-icon="mdi-lock"
+          color="pink accent-2"
+        ></v-text-field>
+        <v-text-field
+          v-model="user.password_confirmation"
+          type="password"
+          outlined
+          label="password"
+          prepend-inner-icon="mdi-lock"
+          color="pink accent-2"
+        ></v-text-field>
+        <BaseBtn>上記内容で新規登録</BaseBtn>
+      </v-form>
+      <v-btn @click="register"></v-btn>
+    </v-container>
+  </v-app>
 </template>
 
 <script>
-export default {}
+import EventService from '@/services/EventService.js'
+export default {
+  data() {
+    return {
+      user: {
+        name: 'asdf',
+        birth_year: '111',
+        gender: '1',
+        area: '1',
+        email: 'a@a',
+        password: 'aaa',
+        password_confirmation: 'aaa'
+      }
+    }
+  },
+  methods: {
+    register() {
+      // console.log(this.user)
+      const params = JSON.stringify(this.user)
+      EventService.userRegister('/v1/sign_up', params)
+    }
+  }
+}
 </script>
 
 <style></style>

@@ -26,11 +26,15 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    { src: '~/assets/sass/app.scss', lang: 'scss' },
+    { src: '~/assets/sass/variables.scss', lang: 'scss' },
+    { src: '~/assets/sass/common.scss', lang: 'scss' }
+  ],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/components.js'],
   /*
    ** Nuxt.js dev-modules
    */
