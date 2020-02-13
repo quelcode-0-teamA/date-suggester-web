@@ -1,13 +1,30 @@
 <template>
   <div class="container scroll">
     <div>
-      <v-subheader>こんなプランはいかがですか？</v-subheader>
+      <h1 class="headline">{{ suggest.title }}</h1>
+      <p>{{ suggest.description }}</p>
       <div>
         <img class="plan-img" src="~/assets/imgsaru.jpg" alt="" />
       </div>
       <v-expansion-panels class="wrapper shadow" accordion multiple>
         <v-expansion-panel v-for="spo in suggest.spots" :key="spo.id">
-          <v-expansion-panel-header>{{ spo.name }}</v-expansion-panel-header>
+          <v-expansion-panel-header>
+            <div>
+              <span>
+                {{ spo.name }}
+              </span>
+              <span>
+                {{ spo.time }}
+              </span>
+              <span>
+                {{ spo.area }}
+              </span>
+            </div>
+            <v-spacer></v-spacer>
+            <div>
+              <img :src="spot.thumb" class="thumb" alt="" />
+            </div>
+          </v-expansion-panel-header>
           <v-expansion-panel-content>
             <div class="d-flex">
               <div>
@@ -18,9 +35,6 @@
               </div>
               <v-spacer></v-spacer>
               <div>
-                <div>
-                  <img :src="spot.thumb" class="thumb" alt="" />
-                </div>
                 <div>
                   <v-btn text rounded>
                     <a :href="`tel:${spot.tel}`">
@@ -48,20 +62,12 @@
                 </v-chip-group>
               </div>
             </div>
-            <hr />
-            <div>
-              <div><img src="" /></div>
-              <div>
-                <span>投稿者肩書き</span>
-                <span>投稿者名前</span>
-              </div>
-            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
       <nuxt-link to="/"><BaseBtn>違う条件でプランを組む</BaseBtn></nuxt-link>
-      <nuxt-link to="/detail"
-        ><BaseBtn>もっと詳しい条件で選ぶ</BaseBtn></nuxt-link
+      <nuxt-link to="/mypage"
+        ><BaseBtn>このプランを保存する</BaseBtn></nuxt-link
       >
     </div>
   </div>
@@ -134,20 +140,4 @@ export default {
 }
 </script>
 
-<style>
-.scroll {
-  overflow-y: scroll;
-}
-.plan-img {
-  width: 400px;
-  height: 400px;
-  object-fit: contain;
-}
-.thumb {
-  max-width: 250px;
-  max-height: 250px;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-</style>
+<style></style>
