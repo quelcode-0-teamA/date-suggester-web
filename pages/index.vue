@@ -20,7 +20,7 @@
             }
           }"
         >
-          <v-btn rounded class="pink accent-1">この条件でプランを探す</v-btn>
+          <BaseBtn>この条件でプランを探す</BaseBtn>
         </nuxt-link>
       </v-form>
     </v-container>

@@ -14,11 +14,13 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
+$primary-color: #fe5492;
 
-$primary-color: #ff4081;
+.shadow{
+  box-shadow: none;
+}
 
 .radio-tile-group {
   display: flex;
@@ -91,6 +93,4 @@ $primary-color: #ff4081;
     }
   }
 }
-@media screen and (max-width: 768px) {
 
-}

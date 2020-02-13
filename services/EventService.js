@@ -9,8 +9,5 @@ const apiDate = axios.create({
 })
 
 export default {
-  userRegister(url, params) {
-    apiDate.post(url, params)
-  },
   apiDate
 }

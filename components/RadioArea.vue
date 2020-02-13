@@ -10,7 +10,7 @@
         name="area"
         checked
       />
-      <div class="radio-tile elevation-1">
+      <div class="radio-tile">
         <div class="icon adjacent-icon">
           <svg height="24" width="24" viewBox="0 0 24 24">
             <path
@@ -31,7 +31,7 @@
         type="radio"
         name="area"
       />
-      <div class="radio-tile elevation-1">
+      <div class="radio-tile">
         <div class="icon excursion-icon">
           <svg height="24" width="24" viewBox="0 0 24 24">
             <path

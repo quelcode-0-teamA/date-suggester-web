@@ -10,7 +10,7 @@
         name="time"
         checked
       />
-      <div class="radio-tile elevation-1">
+      <div class="radio-tile">
         <div class="icon day-icon">
           <svg height="24" width="24" viewBox="0 0 24 24">
             <path
@@ -31,7 +31,7 @@
         type="radio"
         name="time"
       />
-      <div class="radio-tile elevation-1">
+      <div class="radio-tile">
         <div class="icon night-icon">
           <svg height="24" width="24" viewBox="0 0 24 24">
             <path
@@ -51,7 +51,7 @@
         type="radio"
         name="time"
       />
-      <div class="radio-tile elevation-1">
+      <div class="radio-tile">
         <div class="icon whole-day-icon">
           <svg height="24" width="24" viewBox="0 0 24 24">
             <path

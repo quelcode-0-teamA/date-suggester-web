@@ -1,51 +1,69 @@
 <template>
-  <div>
-    <v-expansion-panels accordion popout multiple>
+  <div class="container scroll">
+    <div>
       <v-subheader>こんなプランはいかがですか？</v-subheader>
-      <v-expansion-panel v-for="spot in date.spots" :key="spot.id">
-        <v-expansion-panel-header>{{ date.title }}</v-expansion-panel-header>
-        <v-expansion-panel-content>
-          <div>
-            <div>
-              <h2>TOHOシネマ新宿</h2>
-              <p>
-                ゴジラゴジラゴジラがやってくる
-              </p>
+      <div>
+        <img class="plan-img" src="~/assets/imgsaru.jpg" alt="" />
+      </div>
+      <v-expansion-panels class="wrapper shadow" accordion multiple>
+        <v-expansion-panel v-for="spo in suggest.spots" :key="spo.id">
+          <v-expansion-panel-header>{{ spo.name }}</v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="d-flex">
+              <div>
+                <h2>{{ spot.name }}</h2>
+                <p>
+                  {{ spot.description }}
+                </p>
+              </div>
+              <v-spacer></v-spacer>
+              <div>
+                <div>
+                  <img :src="spot.thumb" class="thumb" alt="" />
+                </div>
+                <div>
+                  <v-btn text rounded>
+                    <a :href="`tel:${spot.tel}`">
+                      <v-icon>mdi-phone</v-icon>
+                    </a>
+                  </v-btn>
+                  <v-btn text rounded>
+                    <a :href="spot.url" target="_brank">
+                      <v-icon>mdi-web</v-icon>
+                    </a>
+                  </v-btn>
+                </div>
+              </div>
             </div>
-            <v-spacer></v-spacer>
+            <hr />
             <div>
-              <v-img>サムネ</v-img>
-              <v-btn text rounded><v-icon>mdi-phone</v-icon></v-btn>
-              <v-btn text rounded><v-icon>mdi-web</v-icon></v-btn>
+              <div>
+                <p>ここに地図取得して表示</p>
+              </div>
+              <div>
+                <v-chip-group column>
+                  <v-chip label>混み具合: {{ spot.混み具合 }}</v-chip>
+                  <v-chip label>喫煙: {{ spot.喫煙 }}</v-chip>
+                  <v-chip label>天気: {{ spot.天気 }}</v-chip>
+                </v-chip-group>
+              </div>
             </div>
-          </div>
-          <hr />
-          <div>
+            <hr />
             <div>
-              <p>ここに地図</p>
+              <div><img src="" /></div>
+              <div>
+                <span>投稿者肩書き</span>
+                <span>投稿者名前</span>
+              </div>
             </div>
-            <div>ここに追加情報リスト</div>
-          </div>
-          <hr />
-          <div>
-            <div><img src="" /></div>
-            <div>
-              <span>肩書き</span>
-              <span>名前</span>
-            </div>
-          </div>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
-
-    <BaseBtn>同じ条件で違うプランを探す</BaseBtn>
-    <nuxt-link to="/"><BaseBtn>違う条件でプランを組む</BaseBtn></nuxt-link>
-    <nuxt-link to="/detail"
-      ><BaseBtn>もっと詳しい条件で選ぶ</BaseBtn></nuxt-link
-    >
-    <nuxt-link to="/mypage"
-      ><BaseBtn>このプランをマイページに保存する</BaseBtn></nuxt-link
-    >
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+      <nuxt-link to="/"><BaseBtn>違う条件でプランを組む</BaseBtn></nuxt-link>
+      <nuxt-link to="/detail"
+        ><BaseBtn>もっと詳しい条件で選ぶ</BaseBtn></nuxt-link
+      >
+    </div>
   </div>
 </template>
 
@@ -60,7 +78,7 @@ export default {
         { title: 'Mypage', icon: 'mdi-account-circle', route: 'mypage' }
       ],
       miniVariant: true,
-      date: {
+      suggest: {
         id: 1,
         title: '猫カフェデート',
         description: 'にゃんことまったりしたい',
@@ -84,13 +102,52 @@ export default {
           }
         ]
       },
+      spot: {
+        id: 1,
+        name: 'TOHOシネマ新宿',
+        description: 'ゴジラ、ゴジラ、ゴジラがやってくる',
+        prefectures: '新宿',
+        address: '東京都新宿区..',
+        budget: '2,500円',
+        tel: '03-1234-5678',
+        time: '2時間',
+        thumb: 'http://thats-poker.net/wp-content/uploads/2016/04/a-11.jpg',
+        url: 'https://www.tagindex.com/html5/text/a_tel.html',
+        混み具合: 'こみがっちー',
+        喫煙: '喫煙おけ',
+        天気: '雨天可だぜ'
+      },
       isAvtive: '1'
     }
   },
   asyncData({ query }) {
     console.log(query)
+  },
+  methods: {
+    // adjast(this.spot.url){
+    test() {
+      console.log(this.spot.url)
+      return this.spot.url
+    }
+    // }
   }
 }
 </script>
 
-<style></style>
+<style>
+.scroll {
+  overflow-y: scroll;
+}
+.plan-img {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+}
+.thumb {
+  max-width: 250px;
+  max-height: 250px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>

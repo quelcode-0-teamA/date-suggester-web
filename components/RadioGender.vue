@@ -10,7 +10,7 @@
         name="gender"
         checked
       />
-      <div class="radio-tile elevation-1">
+      <div class="radio-tile">
         <div class="icon male-icon">
           <svg height="24" width="24" viewBox="0 0 24 24">
             <path
@@ -31,7 +31,7 @@
         type="radio"
         name="gender"
       />
-      <div class="radio-tile elevation-1">
+      <div class="radio-tile">
         <div class="icon female-icon">
           <svg height="24" width="24" viewBox="0 0 24 24">
             <path

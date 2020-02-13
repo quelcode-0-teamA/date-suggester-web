@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar class="pink lighten-2" dense app height="40px">
+    <v-app-bar class="gradient elevation-0" dense app height="40px">
       <img src="../assets/logo.svg" height="30px" />
       <v-toolbar-title>デートプラン改革</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -45,5 +45,8 @@ export default {
 <style>
 * {
   text-align: center;
+}
+.gradient {
+  background: linear-gradient(to bottom, #ff3e94, #ff655d);
 }
 </style>

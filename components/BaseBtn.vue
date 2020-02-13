@@ -1,5 +1,5 @@
 <template>
-  <v-btn :to="choose" rounded class="pink lighten-4">
+  <v-btn :to="choose" rounded class="pink lighten-4 elevation-0">
     <slot></slot>
   </v-btn>
 </template>

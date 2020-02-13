@@ -42,8 +42,8 @@ export default {
         name: 'asdf',
         birth_year: '111',
         gender: '1',
-        area: '1',
-        email: 'a@a',
+        area_id: '1',
+        email: 'aiai@a',
         password: 'aaa',
         password_confirmation: 'aaa'
       }
@@ -52,8 +52,10 @@ export default {
   methods: {
     register() {
       // console.log(this.user)
-      const params = JSON.stringify(this.user)
-      EventService.userRegister('/v1/sign_up', params)
+      const params = JSON.stringify({ user: this.user })
+      EventService.apiDate
+        .post('/v1/sign_up', params)
+        .then((response) => console.log(response))
     }
   }
 }
