@@ -29,7 +29,7 @@ export default {
   css: [
     { src: '~/assets/sass/app.scss', lang: 'scss' },
     { src: '~/assets/sass/variables.scss', lang: 'scss' },
-    { src: '~/assets/sass/common.scss', lang: 'scss' }
+    { src: '~/assets/sass/question.scss', lang: 'scss' }
   ],
   /*
    ** Plugins to load before mounting the App

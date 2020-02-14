@@ -1,5 +1,5 @@
 @import 'variables';
-@import 'common';
+@import 'question';
 
 html {
   font-size: 16px;
@@ -21,7 +21,16 @@ html {
   align-items: center;
   height: 100vh;
 }
+.center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
 
 a {
   text-decoration: none;
+}
+
+.scroll {
+  overflow-y: scroll;
 }

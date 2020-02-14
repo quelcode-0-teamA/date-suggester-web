@@ -1,46 +1,59 @@
 @import 'variables';
 
-@media all and (min-width: 769px) {
-  .q-phrase {
-    padding: 200px 0 60px;
-  }
-  .skip {
-    padding-top: 60px;
-  }
-  .radio-tile-group input {
+.question{
+
+  &__input[type="radio"] {
     display: none;
   }
-  .radio-label {
-    border: 1px solid $font-color;
-    border-radius: 5px;
-    padding: 2.5rem 2.5rem;
-    margin: 0 1rem;
-    background: rgba(255, 255, 255, 0.3);
+  &__radio-label:hover {
+    background: rgba(255, 255, 255, 0.5);
   }
-  .scroll {
-    overflow-y: scroll;
+  &__radio-label:active {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media all and (min-width: 769px) {
+  .question {
+
+    &__phrase {
+      padding: 200px 0 60px;
+    }
+    &__skip {
+      padding-top: 60px;
+    }
+    &__radio-label {
+      border: 1px solid $font-color;
+      border-radius: 5px;
+      padding: 2.5rem 2.5rem;
+      margin: 0 1rem;
+      background: rgba(255, 255, 255, 0.3);
+    }
+    &__remark {
+      margin-top: 300px;
+    }
   }
 }
 
 @media all and (max-width: 768px) {
-  .q-phrase {
-    padding: 100px 0 50px;
-  }
-  .skip {
-    padding-top: 40px;
-  }
-  .radio-tile-group input {
-    display: none;
-  }
-  .radio-label {
-    border: 1px solid $font-color;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 0 1rem;
-    background: rgba(255, 255, 255, 0.3);
-  }
-  .scroll {
-    overflow-y: scroll;
+  .question {
+
+    &__phrase {
+      padding: 100px 0 50px;
+    }
+    &__skip {
+      padding-top: 40px;
+    }
+    &__radio-label {
+      border: 1px solid $font-color;
+      border-radius: 5px;
+      padding: 20px;
+      margin: 0 1rem;
+      background: rgba(255, 255, 255, 0.3);
+    }
+    &__remark {
+      margin-top: 200px;
+    }
   }
 }
 // 以下過去の遺物

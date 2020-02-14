@@ -1,18 +1,11 @@
 <template>
-  <v-btn :to="choose" rounded block class="pink lighten-4 elevation-0">
+  <v-btn rounded block class="grey lighten-2 elevation-0">
     <slot></slot>
   </v-btn>
 </template>
 
 <script>
-export default {
-  props: {
-    choose: {
-      type: String,
-      default: ''
-    }
-  }
-}
+export default {}
 </script>
 
 <style></style>
