@@ -5,24 +5,17 @@ html {
   font-size: 16px;
   font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
 }
+body {
+  background-color: #fafafa;
+}
 
 #app {
-  background-color: #fafafa;
 }
 
 .root-div {
   width: 100%;
   height: 100%;
   justify-content: center;
-}
-
-.web {
-  width: 1280px;
-  max-width: 100%;
-  height: 100%;
-}
-header {
-  height: 300px;
 }
 
 .content {
@@ -35,11 +28,25 @@ header {
   box-sizing: border-box;
 }
 
-
 a {
   text-decoration: none;
 }
 
 .scroll {
   overflow-y: scroll;
+}
+
+.inner {
+  width: 1280px;
+  max-width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+  // position: relative;
+  &__header {
+    padding: 60px 50px 50px;
+    width: 1280px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
 }

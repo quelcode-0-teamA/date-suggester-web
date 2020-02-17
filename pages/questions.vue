@@ -3,53 +3,99 @@
     <header>
       <div class="inner__header d-flex">
         <p>Date Suggester</p>
-        <v-spacer></v-spacer>
-        <nav>
-          <ul class="d-flex">
-            <li>
-              Gallery
-            </li>
-            <li>
-              Gallery
-            </li>
-            <li>
-              Gallery
-            </li>
-          </ul>
-        </nav>
       </div>
     </header>
-
-    <div class="content inner">
-      <img class="image" src="~/assets/titleimg.jpg" />
-      <div>
-        <h1>Date Suggester へようこそ</h1>
-        <br />
-        <p>
-          当アプリでは、<br /><br />
-          「デートには行きたいけどプランを組む時間がない」<br /><br />
-          そんなあなたの為に、<br />
-          デートプランのご提案をさせていただきます。<br /><br />
-          サービスの提供にあたり、<br />
-          いくつかの質問にお答えください。<br />
-          ・<br />
-          ・<br />
-          ・<br />
-        </p>
+    <div class="content">
+      <div class="inner">
+        <div class="question">
+          <v-select
+            :items="yearOptions"
+            label="あなたの生まれた年を選んでください"
+          ></v-select>
+        </div>
+        <div class="question">
+          <span class="question__span">どこまでデートに出かけますか？</span>
+          <div class="question__btn-wrapper">
+            <v-btn class="elevation-0">近く（電車で1時間以内）</v-btn>
+            <v-btn class="elevation-0">遠く（電車で1時間以上）</v-btn>
+          </div>
+        </div>
+        <div class="question">
+          <span class="question__span">ご予算はどのくらいですか？</span>
+          <v-slider
+            v-model="budget"
+            thumb-label
+            max="50000"
+            color="grey darken-1"
+            track-color="grey"
+          >
+          </v-slider>
+        </div>
+        <div class="question">
+          <span class="question__span">デートの時間帯はいつ頃ですか？</span>
+          <div class="question__btn-wrapper">
+            <v-btn class="elevation-0">１日かける</v-btn>
+            <v-btn class="elevation-0">ランチ</v-btn>
+            <v-btn class="elevation-0">夜</v-btn>
+          </div>
+        </div>
+        <div class="question">
+          <span class="question__span">どんなデートがご希望ですか？</span>
+          <div class="question__btn-wrapper">
+            <v-btn class="elevation-0">食事</v-btn>
+            <v-btn class="elevation-0">アクティブ</v-btn>
+            <v-btn class="elevation-0">ゆったり</v-btn>
+          </div>
+        </div>
+        <nuxt-link to="suggest">
+          <v-btn class="elevation-0">質問に回答する</v-btn>
+        </nuxt-link>
       </div>
-      <nuxt-link to="questions">
-        <v-btn class="elevation-0">質問に回答する</v-btn>
-      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {}
+  },
+  computed: {
+    yearOptions() {
+      const years = []
+      for (let i = 2030; i > 1930; i--) {
+        years.push(i)
+      }
+      return years
+    }
+  }
+}
 </script>
 
 <style lang="scss">
 $color-bg: #ffce00;
+
+header {
+  height: 150px;
+}
+.question {
+  padding: 0 70px;
+  margin-bottom: 200px;
+  display: block;
+  text-align: left;
+  &__span {
+    color: grey;
+  }
+  &__btn-wrapper {
+    margin-top: 50px;
+    text-align: center;
+    button {
+      margin: 0 15px;
+      width: 250px;
+    }
+  }
+}
+
 .root-div {
   width: 100%;
   height: 100%;
@@ -69,10 +115,6 @@ $color-bg: #ffce00;
     max-width: 100%;
     margin: 0 auto;
   }
-}
-
-header {
-  height: 300px;
 }
 
 .content {
