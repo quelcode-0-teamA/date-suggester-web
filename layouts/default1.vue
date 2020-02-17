@@ -29,7 +29,6 @@
 
 <script>
 export default {
-  css: ['@/assets/main.css'],
   data() {
     return {
       drawer: false,
@@ -42,10 +41,4 @@ export default {
   }
 }
 </script>
-<style>
-* {
-  text-align: center;
-}
-.gradient {
-}
-</style>
+<style></style>
