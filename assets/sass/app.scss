@@ -1,21 +1,20 @@
-@import 'variables';
-@import 'question';
+// 変数の用意
+$font-color: white;
+$color-bg: #ffce00;
 
-html {
-  font-size: 16px;
-  font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
-}
+// 共通部分のスタイル
 body {
   background-color: #fafafa;
 }
 
 #app {
+  font-size: 16px;
+  font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
 }
 
 .root-div {
   width: 100%;
   height: 100%;
-  justify-content: center;
 }
 
 .content {
@@ -24,7 +23,9 @@ body {
   height: 100%;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -32,21 +33,59 @@ a {
   text-decoration: none;
 }
 
-.scroll {
-  overflow-y: scroll;
+img {
+  border-radius: 5px;
+}
+
+button {
+  width: 280px;
 }
 
 .inner {
-  width: 1280px;
+  width: 700px;
   max-width: 100%;
   height: 100%;
   margin: 0 auto;
   text-align: center;
-  // position: relative;
+  padding: 0 20px;
   &__header {
-    padding: 60px 50px 50px;
-    width: 1280px;
+    padding: 20px;
+    width: 700px;
     max-width: 100%;
     margin: 0 auto;
   }
+}
+
+.top {
+  &__img {
+    object-fit: contain;
+    width: 650px;
+    max-width: 100%;
+    margin-top: 70px;
+  }
+}
+
+.suggest {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__list-item {
+    margin: 0 auto;
+    text-align: left;
+    img {
+      width: 320px;
+      max-width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+  }
+}
+
+.btn-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 700px;
+  max-width: 100%;
+  margin: 70px auto 0;
 }

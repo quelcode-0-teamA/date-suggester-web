@@ -72,7 +72,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $color-bg: #ffce00;
 
 header {

@@ -22,15 +22,11 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: '#ffff51' },
   /*
    ** Global CSS
    */
-  css: [
-    { src: '~/assets/sass/app.scss', lang: 'scss' },
-    { src: '~/assets/sass/variables.scss', lang: 'scss' },
-    { src: '~/assets/sass/question.scss', lang: 'scss' }
-  ],
+  css: [{ src: '~/assets/sass/app.scss', lang: 'scss' }],
   /*
    ** Plugins to load before mounting the App
    */

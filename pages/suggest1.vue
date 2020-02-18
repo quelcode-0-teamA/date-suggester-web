@@ -1,14 +1,14 @@
 <template>
   <div class="root-div">
     <header>
-      <div class="inner__header">
+      <div class="inner__header d-flex">
         <p>Date Suggester</p>
       </div>
     </header>
 
     <div class="content">
       <div class="inner">
-        <img class="top__img" src="~/assets/catcafe.jpg" />
+        <img class="image" src="~/assets/catcafe.jpg" />
         <div class="suggest">
           <h1>Title: 猫カフェデート</h1>
           <p>Description: ニャンコとマターリしたい</p>
@@ -81,4 +81,88 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+$color-bg: #ffce00;
+
+.root-div {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.inner {
+  width: 1280px;
+  max-width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+  // position: relative;
+  &__header {
+    padding: 60px 50px 50px;
+    width: 1280px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  h2 {
+    padding-left: 120px;
+  }
+}
+
+header {
+  height: 300px;
+}
+
+.content {
+  background-color: $color-bg;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  width: 1140px;
+  max-width: 100%;
+  height: 760px;
+  max-height: 100%;
+  // width: 100%;
+  // max-width: 1140px;
+  // height: 100%;
+  // max-height: 760px;
+  border-radius: 5px;
+  object-fit: cover;
+  position: relative;
+  top: -150px;
+  // left: 0;
+  // right: 0;
+  // margin: 0 auto;
+}
+.suggest {
+  position: relative;
+  top: -150px;
+  &__list {
+    text-align: left;
+    padding: 70px;
+    display: flex;
+  }
+  &__list-item {
+    margin: 0 auto 50px;
+    img {
+      height: 360px;
+      max-height: 100%;
+      max-width: 100%;
+      width: 480px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  }
+}
+
+.btn-wrapper {
+  display: flex;
+  width: 1000px;
+  max-width: 100%;
+  margin: 70px auto 0;
+  button {
+    width: 345px;
+  }
+}
+</style>
