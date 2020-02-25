@@ -1,61 +1,63 @@
 <template>
-  <v-app>
-    <v-container>
-      <v-form>
-        <v-text-field
-          v-model="user.email"
-          type="email"
-          outlined
-          label="your email"
-          prepend-inner-icon="mdi-email"
-          color="pink accent-2"
-        ></v-text-field>
-        <v-text-field
-          v-model="user.password"
-          type="password"
-          outlined
-          label="password"
-          prepend-inner-icon="mdi-lock"
-          color="pink accent-2"
-        ></v-text-field>
-        <v-text-field
-          v-model="user.password_confirmation"
-          type="password"
-          outlined
-          label="password"
-          prepend-inner-icon="mdi-lock"
-          color="pink accent-2"
-        ></v-text-field>
-        <BaseBtn>上記内容で新規登録</BaseBtn>
-      </v-form>
-      <v-btn @click="register"></v-btn>
-    </v-container>
-  </v-app>
+  <div class="root-div">
+    <div class="content">
+      <div class="inner">
+        <v-form class="form">
+          <h1 class="subtitle-1">会員登録</h1>
+          <v-text-field
+            v-model="user.email"
+            :rules="emailRules"
+            type="email"
+            outlined
+            label="your email"
+            prepend-inner-icon="mdi-email"
+          ></v-text-field>
+          <v-text-field
+            v-model="user.password"
+            type="password"
+            outlined
+            label="password"
+            prepend-inner-icon="mdi-lock"
+          ></v-text-field>
+          <v-text-field
+            v-model="user.password_confirmation"
+            type="password"
+            outlined
+            label="password"
+            prepend-inner-icon="mdi-lock"
+          ></v-text-field>
+          <BaseBtn>上記内容で新規登録</BaseBtn>
+          <v-divider></v-divider>
+          <nuxt-link to="signIn">ログインはこちら</nuxt-link>
+        </v-form>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import EventService from '@/services/EventService.js'
 export default {
   data() {
     return {
       user: {
-        name: 'asdf',
-        birth_year: '111',
-        gender: '1',
-        area_id: '1',
-        email: 'aiai@a',
-        password: 'aaa',
-        password_confirmation: 'aaa'
-      }
-    }
-  },
-  methods: {
-    register() {
-      // console.log(this.user)
-      const params = JSON.stringify({ user: this.user })
-      EventService.apiDate
-        .post('/v1/sign_up', params)
-        .then((response) => console.log(response))
+        name: 'sayapoko',
+        birth_year: 2020,
+        gender: 2,
+        area_id: 1,
+        email: 'email@example.com',
+        password: 'password',
+        password_confirmation: 'password'
+      },
+      nameRules: [(value) => !!value || '名前を入力してください'],
+      emailRules: [
+        (value) => !!value || 'Emailを入力してください',
+        (value) =>
+          value.indexOf('@') !== 0 || 'Emailのユーザーを入力してください',
+        (value) => value.includes('@') || 'Emailに「@」が含まれていません',
+        (value) =>
+          value.indexOf('.') <= value.length - 3 ||
+          '有効なドメインを入力してください'
+      ]
     }
   }
 }

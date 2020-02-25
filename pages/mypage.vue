@@ -1,27 +1,50 @@
 <template>
-  <v-app>
-    <v-container>マイページ。</v-container>
-    <v-container>
-      <v-layout wrap justify-space-around>
-        <v-flex>
-          <v-card class="mx-auto" max-width="300px">
-            <v-img>
-              <v-card-title>ここにサムネ＆タイトル。複製</v-card-title>
-            </v-img>
-            <v-card-subtitle>subtitle</v-card-subtitle>
-            <v-card-text>text</v-card-text>
-            <v-card-actions>
-              <v-btn><v-icon>btn</v-icon></v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </v-app>
+  <div class="root-div">
+    <div class="content">
+      <div class="inner">
+        <div v-for="date in dates" class="suggest__list">
+          <div class="suggest__list-item">
+            <img :src="date.thumb" />
+          </div>
+          <div class="suggest__list-item">
+            <p>{{ date.title }}</p>
+            <v-chip label
+              ><v-icon left>mdi-map-marker</v-icon>{{ date.area }}</v-chip
+            >
+            <br />
+            <v-chip label
+              ><v-icon left>mdi-calendar-blank</v-icon>{{ date.day }}</v-chip
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      dates: [
+        {
+          id: 1,
+          title: 'カワウソふれあいデート',
+          area: '上野',
+          thumb: 'https://thats-poker.net/wp-content/uploads/2016/04/a-11.jpg',
+          day: '2020年2月20日'
+        },
+        {
+          id: 2,
+          title: 'カフェめぐり',
+          area: '新宿',
+          thumb: 'https://thats-poker.net/wp-content/uploads/2016/04/a-11.jpg',
+          day: '2020年2月10日'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style></style>

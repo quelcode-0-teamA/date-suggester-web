@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root-div">
     <div class="content">
       <div class="inner">
         <img class="top__img" src="~/assets/catcafe.jpg" />
@@ -12,6 +12,10 @@
           >
           <v-chip label
             ><v-icon left>mdi-clock-outline</v-icon> {{ time }}</v-chip
+          >
+          <v-chip label
+            ><v-icon left>mdi-calendar-blank </v-icon
+            >{{ day }}に使いました</v-chip
           >
         </div>
         <h2 class="text-left">デートコース</h2>
@@ -53,6 +57,7 @@ export default {
       area: '新宿',
       budget: '2,500円',
       time: '4時間',
+      day: '2020年2月2日',
       thumb: 'URL//image/path/..',
       spots: [
         {
