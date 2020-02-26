@@ -178,7 +178,7 @@
                 <base-btn @child-btn="back">戻る</base-btn>
                 <nuxt-link to="suggest">
                   <v-btn
-                    @click="makeSuggest"
+                    @click="updateAnswers"
                     :disabled="!answers.date_type"
                     class="elevation-0"
                     rounded
@@ -195,22 +195,26 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
-      s1: 1
-  },
-  computed: {
-    qParams() {
-      return `?date_area=${this.$store.state.answers.date_area}&date_budget=${this.$store.state.answers.date_budget}&date_time=${this.$store.state.answers.date_time}&date_type=${this.$store.state.answers.date_type}`
+      s1: 1,
+      answers: {
+        date_area: null,
+        date_budget: null,
+        date_time: null,
+        date_type: null
+      }
     }
   },
+  computed: {
+    // qParams() {
+    //   return `?date_area=${this.$store.state.answers.date_area}&date_budget=${this.$store.state.answers.date_budget}&date_time=${this.$store.state.answers.date_time}&date_type=${this.$store.state.answers.date_type}`
+    // },
+    // ...mapState(['answers'])
+  },
   methods: {
-    makeSuggest() {
-      this.$axios.$get(`date-suggest${this.qParams}`).then((response) => {
-        console.log(response)
-      })
-    },
     log() {
       console.log()
     },
@@ -219,7 +223,19 @@ export default {
     },
     back() {
       this.s1--
-    }
+    },
+    updateAnswers() {
+      this.UPDATE_DATE_AREA(this.answers.date_area)
+      this.UPDATE_DATE_BUDGET(this.answers.date_budget)
+      this.UPDATE_DATE_TIME(this.answers.date_time)
+      this.UPDATE_DATE_TYPE(this.answers.date_type)
+    },
+    ...mapMutations([
+      'UPDATE_DATE_AREA',
+      'UPDATE_DATE_BUDGET',
+      'UPDATE_DATE_TIME',
+      'UPDATE_DATE_TYPE'
+    ])
   }
 }
 </script>

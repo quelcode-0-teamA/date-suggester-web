@@ -4,24 +4,31 @@
       <div class="inner">
         <img class="top__img" src="~/assets/catcafe.jpg" />
         <div class="suggest">
-          <h1>Title: 猫カフェデート</h1>
-          <p>Description: ニャンコとマターリしたい</p>
-          <v-chip label><v-icon left>mdi-map-marker</v-icon> {{ area }}</v-chip>
+          <h1>{{ suggest.title }}</h1>
+          <p>{{ suggest.description }}</p>
           <v-chip label
-            ><v-icon left>mdi-currency-usd</v-icon> {{ budget }}</v-chip
+            ><v-icon left>mdi-map-marker</v-icon> {{ suggest.area }}</v-chip
           >
           <v-chip label
-            ><v-icon left>mdi-clock-outline</v-icon> {{ time }}</v-chip
+            ><v-icon left>mdi-currency-usd</v-icon>
+            {{ suggest.total_budget }}</v-chip
+          >
+          <v-chip label
+            ><v-icon left>mdi-clock-outline</v-icon> {{ suggest.time }}</v-chip
           >
         </div>
         <h2 class="text-left">デートコース</h2>
         <div class="suggest__list">
-          <div v-for="aspot in spots" class="suggest__list-item">
+          <div v-for="aspot in suggest.spots" class="suggest__list-item">
             <img :src="aspot.thumb" />
             <div>
               <h3>{{ aspot.name }}</h3>
               <v-chip label
                 ><v-icon left>mdi-map-marker</v-icon>{{ aspot.area }}</v-chip
+              >
+              <v-chip label
+                ><v-icon left>mdi-currency-usd</v-icon
+                >{{ aspot.budget }}</v-chip
               >
               <v-chip label
                 ><v-icon left>mdi-clock-outline</v-icon>{{ aspot.time }}</v-chip
@@ -44,7 +51,6 @@
 </template>
 
 <script>
-// import axios from 'axios'
 export default {
   data() {
     return {
@@ -73,12 +79,27 @@ export default {
       ]
     }
   },
-  asyncData({ $axios, store }) {
-    return $axios.get().then((response) => {
-      return {
-        suggest: response.data
-      }
-    })
+  computed: {
+    // mapGetters([])
+  },
+  asyncData({ store, $axios }) {
+    console.log($axios)
+    // return {}
+    return $axios
+      .$get(
+        `https://api-date-suggester-dev.herokuapp.com/v1/date-suggest${store.getters.qParams}`,
+        {
+          headers: {
+            Authorization: 'Bearer ' + 'vLDjuV1hFabyYesjmfZRS8E8'
+          }
+        }
+      )
+      .then((response) => {
+        console.log(response)
+        return {
+          suggest: response
+        }
+      })
   }
 }
 </script>

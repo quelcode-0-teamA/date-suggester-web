@@ -51,13 +51,13 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: `https://api-date-suggester-dev.herokuapp.com/v1/`,
-    headers: {
-      common: {
-        'Content-Type': 'application/json'
-        // Authorizaiton: `Bearer ${this.token}`
-      }
-    }
+    // baseURL: `https://api-date-suggester-dev.herokuapp.com/v1/`,
+    // headers: {
+    //   common: {
+    //     'Content-Type': 'application/json'
+    //     // Authorizaiton: `Bearer ${this.token}`
+    //   }
+    // }
   },
   /*
    ** vuetify module configuration

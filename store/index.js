@@ -41,46 +41,50 @@ export const state = () => ({
   },
   token: 'vLDjuV1hFabyYesjmfZRS8E8',
   answers: {
-    date_area: '1',
-    date_budget: '2',
-    date_time: '2',
-    date_type: '2'
+    date_area: null,
+    date_budget: null,
+    date_time: null,
+    date_type: null
   }
 })
 
 export const actions = {
   addGender({ commit }, value) {
-    commit('addGender', value)
+    commit('ADD_GENDER', value)
     // console.log(value)
-  },
-  updateDateArea({ commit }, value) {
-    commit('upDateArea', value)
-  },
-  updateDateBudget({ commit }, value) {
-    commit('upDateBudget', value)
-  },
-  updateDateTime({ commit }, value) {
-    commit('upDateTime', value)
-  },
-  updateDateType({ commit }, value) {
-    commit('upDateType', value)
   }
+  // updateDateArea({ commit }, value) {
+  //   commit('UPDATE_DATE_AREA', value)
+  // },
+  // updateDateBudget({ commit }, value) {
+  //   commit('UPDATE_DATE_BUDGET', value)
+  // },
+  // updateDateTime({ commit }, value) {
+  //   commit('UPDATE_DATE_TIME', value)
+  // },
+  // updateDateType({ commit }, value) {
+  //   commit('UPDATE_DATE_TYPE', value)
+  // }
 }
 export const mutations = {
-  addGender(state, value) {
+  ADD_GENDER(state, value) {
     state.user.gender = value
   },
-  updateDateArea(state, value) {
+  UPDATE_DATE_AREA(state, value) {
     state.answers.date_area = value
   },
-  updateDateBudget(state, value) {
+  UPDATE_DATE_BUDGET(state, value) {
     state.answers.date_budget = value
   },
-  updateDateTime(state, value) {
+  UPDATE_DATE_TIME(state, value) {
     state.answers.date_time = value
   },
-  updateDateType(state, value) {
+  UPDATE_DATE_TYPE(state, value) {
     state.answers.date_type = value
   }
 }
-export const getters = {}
+export const getters = {
+  qParams(state) {
+    return `?date_area=${state.answers.date_area}&date_budget=${state.answers.date_budget}&date_time=${state.answers.date_time}&date_type=${state.answers.date_type}`
+  }
+}
