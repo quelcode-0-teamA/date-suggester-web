@@ -176,14 +176,15 @@
                   {{ answers.date_type }}
                 </p>
                 <base-btn @child-btn="back">戻る</base-btn>
-
-                <v-btn
-                  @click="a"
-                  :disabled="!answers.date_type"
-                  class="elevation-0"
-                  rounded
-                  >決定</v-btn
-                >
+                <nuxt-link to="suggest">
+                  <v-btn
+                    @click="makeSuggest"
+                    :disabled="!answers.date_type"
+                    class="elevation-0"
+                    rounded
+                    >決定</v-btn
+                  >
+                </nuxt-link>
               </form>
             </v-stepper-content>
           </v-stepper-items>
@@ -197,42 +198,19 @@
 export default {
   data() {
     return {
-      s1: 1,
-      answers: {
-        date_area: '',
-        date_budget: '',
-        date_time: '',
-        date_type: ''
-      }
-    }
+      s1: 1
   },
   computed: {
     qParams() {
-      return `?date_area=${this.date_area}&date_budget=${this.date_budget}&date_time=${this.date_time}&date_type=${this.date_type}`
+      return `?date_area=${this.$store.state.answers.date_area}&date_budget=${this.$store.state.answers.date_budget}&date_time=${this.$store.state.answers.date_time}&date_type=${this.$store.state.answers.date_type}`
     }
   },
   methods: {
-    a() {
-      this.$axios
-        .get(
-          `https://api-date-suggester-dev.herokuapp.com/v1/date-suggest?date_budget=2&date_time=2&date_type=2&date_area=1`,
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer vLDjuV1hFabyYesjmfZRS8E8`
-            }
-          }
-        )
-        .then((response) => {
-          console.log(response)
-        })
+    makeSuggest() {
+      this.$axios.$get(`date-suggest${this.qParams}`).then((response) => {
+        console.log(response)
+      })
     },
-    // makeSuggest() {
-    //   this.$api.setHeader('Authorization', 'Bearer: vLDjuV1hFabyYesjmfZRS8E8')
-    //   this.$api.$get(`/v1/date-suggest?${this.qParams}`).then((response) => {
-    //     console.log(response)
-    //   })
-    // },
     log() {
       console.log()
     },

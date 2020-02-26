@@ -44,6 +44,7 @@
 </template>
 
 <script>
+// import axios from 'axios'
 export default {
   data() {
     return {
@@ -71,6 +72,13 @@ export default {
         }
       ]
     }
+  },
+  asyncData({ $axios, store }) {
+    return $axios.get().then((response) => {
+      return {
+        suggest: response.data
+      }
+    })
   }
 }
 </script>

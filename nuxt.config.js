@@ -50,7 +50,15 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: `https://api-date-suggester-dev.herokuapp.com/v1/`,
+    headers: {
+      common: {
+        'Content-Type': 'application/json'
+        // Authorizaiton: `Bearer ${this.token}`
+      }
+    }
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
