@@ -28,7 +28,7 @@
           ></v-text-field>
           <BaseBtn>上記内容で新規登録</BaseBtn>
           <v-divider></v-divider>
-          <nuxt-link to="signIn">ログインはこちら</nuxt-link>
+          <nuxt-link to="signin">ログインはこちら</nuxt-link>
         </v-form>
       </div>
     </div>

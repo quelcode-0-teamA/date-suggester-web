@@ -36,7 +36,7 @@
           ></v-text-field>
           <BaseBtn>ログイン</BaseBtn>
           <v-divider></v-divider>
-          <nuxt-link to="signUp">会員登録はこちら</nuxt-link>
+          <nuxt-link to="signup">会員登録はこちら</nuxt-link>
         </v-form>
       </div>
     </div>

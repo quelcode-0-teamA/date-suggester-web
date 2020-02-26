@@ -2,7 +2,7 @@
   <div>
     <div class="content">
       <div class="inner">
-        <img class="top__img" src="~/assets/catcafe.jpg" />
+        <img :src="suggest.thumb" class="top__img" />
         <div class="suggest">
           <h1>{{ suggest.title }}</h1>
           <p>{{ suggest.description }}</p>
