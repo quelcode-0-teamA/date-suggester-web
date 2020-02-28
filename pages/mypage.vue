@@ -3,26 +3,36 @@
     <div class="content">
       <div class="inner">
         <div v-for="myplan in myplans" class="suggest__list">
-          <div class="suggest__list-item">
-            <img :src="myplan.plan.thumb" />
-          </div>
-          <div class="suggest__list-item">
-            <p>{{ myplan.plan.title }}</p>
-            <v-chip label
-              ><v-icon left>mdi-map-marker</v-icon
-              >{{ myplan.plan.area }}</v-chip
-            >
-            <br />
-            <v-chip label
-              ><v-icon left>mdi-currency-usd</v-icon
-              >{{ myplan.plan.total_budget }}</v-chip
-            >
-            <br />
-            <v-chip label
-              ><v-icon left>mdi-calendar-blank</v-icon
-              >{{ myplan.plan.day }}</v-chip
-            >
-          </div>
+          <nuxt-link
+            :to="{ name: 'myplans-id', params: { id: myplan.plan.id } }"
+          >
+            <div class="d-flex">
+              <div>
+                <img :src="dates[0].thumb" class="img" />
+              </div>
+              <div class="suggest__list-item">
+                <p>{{ myplan.plan.title }}</p>
+                <v-chip label
+                  ><v-icon left>mdi-map-marker</v-icon
+                  >{{ myplan.plan.area }}</v-chip
+                >
+                <br />
+                <v-chip label
+                  ><v-icon left>mdi-currency-usd</v-icon
+                  >{{ myplan.plan.total_budget }}</v-chip
+                >
+                <br />
+                <v-chip label
+                  ><v-icon left>mdi-calendar-blank</v-icon
+                  >{{ myplan.plan.day }}</v-chip
+                >
+              </div>
+            </div>
+          </nuxt-link>
+          <!-- <v-btn
+            :to="{ name: 'myplans-id', params: { id: `${myplan.plan.id}` } }"
+            class="suggest__list-item"
+          ></v-btn> -->
         </div>
       </div>
     </div>
