@@ -4,16 +4,23 @@
       <div class="inner">
         <div v-for="myplan in myplans" class="suggest__list">
           <div class="suggest__list-item">
-            <img :src="myplan.thumb" />
+            <img :src="myplan.plan.thumb" />
           </div>
           <div class="suggest__list-item">
-            <p>{{ myplan.title }}</p>
+            <p>{{ myplan.plan.title }}</p>
             <v-chip label
-              ><v-icon left>mdi-map-marker</v-icon>{{ myplan.area }}</v-chip
+              ><v-icon left>mdi-map-marker</v-icon
+              >{{ myplan.plan.area }}</v-chip
             >
             <br />
             <v-chip label
-              ><v-icon left>mdi-calendar-blank</v-icon>{{ myplan.day }}</v-chip
+              ><v-icon left>mdi-currency-usd</v-icon
+              >{{ myplan.plan.total_budget }}</v-chip
+            >
+            <br />
+            <v-chip label
+              ><v-icon left>mdi-calendar-blank</v-icon
+              >{{ myplan.plan.day }}</v-chip
             >
           </div>
         </div>
@@ -48,7 +55,9 @@ export default {
     const dateToken = app.$cookies.get('datetoken')
     return $axios
       .$get('mypage/my_plans', {
-        Authorization: 'Bearer ' + dateToken
+        headers: {
+          Authorization: 'Bearer ' + dateToken
+        }
       })
       .then((response) => {
         console.log(response)
@@ -57,6 +66,19 @@ export default {
         }
       })
   }
+  // asyncData({ $axios, app }) {
+  //   const dateToken = app.$cookies.get('datetoken')
+  //   return $axios
+  //     .$get('mypage/my_plans', {
+  //       Authorization: 'Bearer ' + dateToken
+  //     })
+  //     .then((response) => {
+  //       console.log(response)
+  //       return {
+  //         myplans: response
+  //       }
+  //     })
+  // }
 }
 </script>
 

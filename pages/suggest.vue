@@ -90,7 +90,7 @@ export default {
   },
   asyncData({ store, $axios, app }) {
     const dateToken = app.$cookies.get('datetoken')
-    console.log(app.$cookies.get('datetoken'))
+    // console.log(app.$cookies.get('datetoken'))
     // return {}
     return $axios
       .$get(`date-suggest${store.getters.qParams}`, {
@@ -99,7 +99,7 @@ export default {
         }
       })
       .then((response) => {
-        console.log(response)
+        // console.log(response)
         return {
           suggest: response,
           dateToken
@@ -119,13 +119,12 @@ export default {
           {
             headers: {
               Authorization: 'Bearer ' + this.dateToken
-              // tokenどうにかする
             }
           }
         )
         .then((response) => {
           console.log(response)
-          this.$router.push('/mypage')
+          // this.$router.push('/mypage')
         })
     }
   }

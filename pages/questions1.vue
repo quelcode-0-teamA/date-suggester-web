@@ -79,7 +79,7 @@ export default {
   },
   asyncData({ $axios }) {
     return $axios.$get('areas').then((response) => {
-      console.log(response)
+      // console.log(response)
       return {
         areas: response
       }
@@ -131,7 +131,7 @@ export default {
           }
         })
         .then((response) => {
-          console.log(response)
+          // console.log(response)
           this.$cookies.set('datetoken', response.token, {
             path: '/',
             maxAge: 60 * 60 * 24 * 7
@@ -148,7 +148,7 @@ export default {
     }
   },
   middleware(context) {
-    console.log(context.app.store.$cookies.get('datetoken'))
+    // console.log(context.app.store.$cookies.get('datetoken'))
     const dateToken = context.app.store.$cookies.get('datetoken')
     if (dateToken) {
       return context.redirect('/questions2')
