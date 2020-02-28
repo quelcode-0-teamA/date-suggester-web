@@ -2,7 +2,7 @@
   <div class="root-div">
     <div class="content">
       <div class="inner">
-        <img :src="suggest.thumb" class="top__img" />
+        <img :src="thumb" class="top__img" />
         <div class="suggest">
           <h1>{{ suggest.title }}</h1>
           <p>{{ suggest.description }}</p>
@@ -41,7 +41,7 @@
             <v-btn rounded class="elevation-0" outlined>質問に答え直す</v-btn>
           </nuxt-link>
           <v-spacer></v-spacer>
-          <v-btn @click="addMyplan" rounded class="elevation-0"
+          <v-btn @click="" rounded class="elevation-0"
             >このプランを保存する</v-btn
           >
         </div>
@@ -82,44 +82,45 @@ export default {
   computed: {
     // mapGetters([])
   },
-  // asyncData({ store, $axios }) {
-  //   console.log($axios)
-  //   // return {}
-  //   return $axios
-  //     .$get(`date-suggest${store.getters.qParams}`, {
-  //       headers: {
-  //         Authorization: 'Bearer ' + 'vLDjuV1hFabyYesjmfZRS8E8'
-  //       }
-  //     })
-  //     .then((response) => {
-  //       console.log(response)
-  //       return {
-  //         suggest: response
-  //       }
-  //     })
-  // },
+  asyncData({ store, $axios, app }) {
+    const dateToken = app.$cookies.get('datetoken')
+    console.log(app.$cookies.get('datetoken'))
+    // return {}
+    return $axios
+      .$get(`date-suggest${store.getters.qParams}`, {
+        headers: {
+          Authorization: 'Bearer ' + dateToken
+        }
+      })
+      .then((response) => {
+        console.log(response)
+        return {
+          suggest: response
+        }
+      })
+  },
   methods: {
-    addMyplan() {
-      this.$axios
-        .$post(
-          `mypage/my_plans`,
-          {
-            plan: {
-              plan_id: this.suggest.id
-            }
-          },
-          {
-            headers: {
-              Authorization: 'Bearer ' + '8hmQLcYxVwDiCwFXfAF6ALEZ'
-              // tokenどうにかする
-            }
-          }
-        )
-        .then((response) => {
-          console.log(response)
-          this.$router.push('/mypage')
-        })
-    }
+    // addMyplan() {
+    //   this.$axios
+    //     .$post(
+    //       `mypage/my_plans`,
+    //       {
+    //         plan: {
+    //           plan_id: this.suggest.id
+    //         }
+    //       },
+    //       {
+    //         headers: {
+    //           Authorization: 'Bearer ' + '8hmQLcYxVwDiCwFXfAF6ALEZ'
+    //           // tokenどうにかする
+    //         }
+    //       }
+    //     )
+    //     .then((response) => {
+    //       console.log(response)
+    //       this.$router.push('/mypage')
+    //     })
+    // }
   }
 }
 </script>
