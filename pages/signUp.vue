@@ -26,7 +26,7 @@
             label="password"
             prepend-inner-icon="mdi-lock"
           ></v-text-field>
-          <BaseBtn>上記内容で新規登録</BaseBtn>
+          <BaseBtn v-on:child-btn="signup">上記内容で新規登録</BaseBtn>
           <v-divider></v-divider>
           <nuxt-link to="signin">ログインはこちら</nuxt-link>
         </v-form>
@@ -58,6 +58,29 @@ export default {
           value.indexOf('.') <= value.length - 3 ||
           '有効なドメインを入力してください'
       ]
+    }
+  },
+  methods: {
+    signup() {
+      this.$axios
+        .post(
+          'formal_sign_up',
+          {
+            formal_user: {
+              email: this.user.email,
+              password: this.user.password,
+              password_confirmation: this.user.password_confirmation
+            }
+          },
+          {
+            headers: {
+              Authorization: 'Bearer ' + '8hmQLcYxVwDiCwFXfAF6ALEZ'
+            }
+          }
+        )
+        .then((response) => {
+          console.log(response)
+        })
     }
   }
 }

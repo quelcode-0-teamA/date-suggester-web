@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root-div">
     <div class="content">
       <div class="inner">
         <img :src="suggest.thumb" class="top__img" />
@@ -37,13 +37,13 @@
           </div>
         </div>
         <div class="btn-wrapper">
-          <nuxt-link to="questions">
-            <v-btn rounded class="elevation-0" outlined>他の提案を見る</v-btn>
+          <nuxt-link to="questions2">
+            <v-btn rounded class="elevation-0" outlined>質問に答え直す</v-btn>
           </nuxt-link>
           <v-spacer></v-spacer>
-          <nuxt-link to="questions">
-            <v-btn rounded class="elevation-0">このプランを保存する</v-btn>
-          </nuxt-link>
+          <v-btn @click="addMyplan" rounded class="elevation-0"
+            >このプランを保存する</v-btn
+          >
         </div>
       </div>
     </div>
@@ -82,24 +82,44 @@ export default {
   computed: {
     // mapGetters([])
   },
-  asyncData({ store, $axios }) {
-    console.log($axios)
-    // return {}
-    return $axios
-      .$get(
-        `https://api-date-suggester-dev.herokuapp.com/v1/date-suggest${store.getters.qParams}`,
-        {
-          headers: {
-            Authorization: 'Bearer ' + 'vLDjuV1hFabyYesjmfZRS8E8'
+  // asyncData({ store, $axios }) {
+  //   console.log($axios)
+  //   // return {}
+  //   return $axios
+  //     .$get(`date-suggest${store.getters.qParams}`, {
+  //       headers: {
+  //         Authorization: 'Bearer ' + 'vLDjuV1hFabyYesjmfZRS8E8'
+  //       }
+  //     })
+  //     .then((response) => {
+  //       console.log(response)
+  //       return {
+  //         suggest: response
+  //       }
+  //     })
+  // },
+  methods: {
+    addMyplan() {
+      this.$axios
+        .$post(
+          `mypage/my_plans`,
+          {
+            plan: {
+              plan_id: this.suggest.id
+            }
+          },
+          {
+            headers: {
+              Authorization: 'Bearer ' + '8hmQLcYxVwDiCwFXfAF6ALEZ'
+              // tokenどうにかする
+            }
           }
-        }
-      )
-      .then((response) => {
-        console.log(response)
-        return {
-          suggest: response
-        }
-      })
+        )
+        .then((response) => {
+          console.log(response)
+          this.$router.push('/mypage')
+        })
+    }
   }
 }
 </script>

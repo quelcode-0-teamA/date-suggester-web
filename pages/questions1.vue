@@ -6,51 +6,141 @@
           <v-form>
             <v-select
               :items="yearOptions"
+              :value="yearOptions"
+              v-model="birth_year"
               outlined
               label="あなたの生まれた年を選んでください"
             ></v-select>
-            <v-text-field label="行動範囲を聞く問い"></v-text-field>
+            <v-select
+              :items="areas"
+              v-model="area"
+              item-text="name"
+              item-value="id"
+              outlined
+              return-object
+              label="お住まいの地域を選んでください"
+            ></v-select>
+            <!-- <multiselect
+              :options="yearOptions"
+              v-model="birth_year"
+            ></multiselect>
+            <multiselect
+              v-model="area_id"
+              :options="areas"
+              :allow-empty="false"
+              track-by="id"
+              label="name"
+              placeholder="お住まいの地域を選んでください"
+            ></multiselect> -->
           </v-form>
         </div>
-
-        <nuxt-link to="suggest">
-          <v-btn rounded class="elevation-0">質問に回答する</v-btn>
-        </nuxt-link>
+        <v-btn @click="setToken" rounded class="elevation-0"
+          >質問に回答する</v-btn
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script>
+// import Multiselect from 'vue-multiselect'
 export default {
+  components: {
+    // Multiselect
+  },
   data() {
     return {
-      temp_user: {
-        birth_year: 1990,
-        area_id: 1
-      }
+      birth_year: null,
+      area: {}
     }
   },
   computed: {
     yearOptions() {
       const years = []
-      for (let i = 2030; i > 1930; i--) {
+      for (let i = 2010; i > 1930; i--) {
         years.push(i)
       }
       return years
+    },
+    areaName() {
+      const areaName = []
+      for (let i = 0; i < this.areas.length; i++) {
+        areaName.push(this.areas[i].name)
+      }
+      return areaName
+    },
+    areaId() {
+      const areaId = []
+      for (let i = 0; i < this.areas.length; i++) {
+        areaId.push(this.areas[i].id)
+      }
+      return areaId
+    }
+  },
+  asyncData({ $axios }) {
+    return $axios.$get('areas').then((response) => {
+      console.log(response)
+      return {
+        areas: response
+      }
+    })
+  },
+  methods: {
+    // tempSignup() {
+    //   this.$axios
+    //     .$post('temp_sign_up', {
+    //       temp_user: {
+    //         birth_year: this.birth_year,
+    //         area_id: this.area.id
+    //       }
+    //     })
+    //     .then((response) => {
+    //       console.log(response, 'hosii')
+    //       this.$store.commit('UPDATE_TOKEN', response.token)
+    //       console.log(this.$store.state.token)
+    //       this.$router.push('/questions2')
+    //     })
+    // tokenをstoreに入れたけどcookieで扱う必要あり？
+    // },
+    // async tempsignup() {
+    // const registrationinfo = {temp_user: {
+    //   birth_year: this.birth_year,
+    //   area_id: this.area.id
+    // }}
+    //   await this.$axios.$post('temp_sign_up', {
+    //     temp_user: {
+    //       birth_year: this.birth_year,
+    //       area_id: this.area.id
+    //     }
+    //   })
+    //   this.$auth.loginWith('localtemp', {
+    //     data: {
+    //       temp_user: {
+    //         birth_year: this.birth_year,
+    //         area_id: this.area.id
+    //       }
+    //     }
+    //   })
+    // }
+    setToken() {
+      this.$axios
+        .$post('temp_sign_up', {
+          temp_user: {
+            birth_year: this.birth_year,
+            area_id: this.area.id
+          }
+        })
+        .then((response) => {
+          console.log(response)
+          this.$cookies.set('datetoken', response.token, {
+            path: '/',
+            maxAge: 60 * 60 * 24 * 7
+          })
+          this.$router.push('questions2')
+        })
     }
   }
 }
 </script>
 
-<style lang="scss">
-.question {
-  padding: 0 70px;
-  margin-bottom: 200px;
-  display: block;
-  text-align: left;
-  &__span {
-    color: grey;
-  }
-}
-</style>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

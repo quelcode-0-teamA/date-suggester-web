@@ -18,7 +18,7 @@
             ・<br />
           </p>
         </div>
-        <nuxt-link to="questions">
+        <nuxt-link to="questions1">
           <v-btn rounded class="elevation-0">質問に回答する</v-btn>
         </nuxt-link>
       </div>

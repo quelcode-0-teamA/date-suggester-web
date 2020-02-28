@@ -44,14 +44,16 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/auth',
+    ['cookie-universal-nuxt', { parseJSON: false }]
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    // baseURL: `https://api-date-suggester-dev.herokuapp.com/v1/`,
+    baseURL: `https://api-date-suggester-dev.herokuapp.com/v1/`
     // headers: {
     //   common: {
     //     'Content-Type': 'application/json'
@@ -88,5 +90,32 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  auth: {
+    redirect: {
+      login: false,
+      logout: false,
+      home: false
+    },
+    strategies: {
+      localtemp: {
+        _scheme: 'local',
+        endpoints: {
+          login: { url: 'temp_sign_up', method: 'post', propertyName: 'token' },
+          logout: false,
+          user: { url: `temp_sign_up`, method: 'get', propertyName: 'user' }
+        }
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+      },
+      localformal: {
+        _scheme: 'local',
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'token' },
+          logout: false,
+          user: { url: `users/`, method: 'get', propertyName: 'user' }
+        }
+      }
+    }
   }
 }

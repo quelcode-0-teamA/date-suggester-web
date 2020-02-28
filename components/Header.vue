@@ -2,7 +2,7 @@
   <header>
     <div class="inner__header">
       <nuxt-link to="/">
-        <p>Date Suggester</p>
+        <p>Date Suggester（仮）</p>
       </nuxt-link>
       <v-spacer></v-spacer>
       <nav>

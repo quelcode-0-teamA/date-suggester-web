@@ -39,7 +39,7 @@ export const state = () => ({
       }
     ]
   },
-  token: 'vLDjuV1hFabyYesjmfZRS8E8',
+  token: '',
   answers: {
     date_area: null,
     date_budget: null,
@@ -81,6 +81,9 @@ export const mutations = {
   },
   UPDATE_DATE_TYPE(state, value) {
     state.answers.date_type = value
+  },
+  UPDATE_TOKEN(state, value) {
+    state.token = value
   }
 }
 export const getters = {

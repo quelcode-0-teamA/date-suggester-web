@@ -4,14 +4,14 @@
       <div class="inner">
         <v-form class="form">
           <h1 class="subtitle-1">ログイン</h1>
-          <v-text-field
+          <!-- <v-text-field
             v-model="user.name"
             :rules="nameRules"
             type="text"
             outlined
             label="your name"
             prepend-inner-icon="mdi-account"
-          ></v-text-field>
+          ></v-text-field> -->
           <v-text-field
             v-model="user.email"
             :rules="emailRules"
@@ -34,7 +34,7 @@
             label="password"
             prepend-inner-icon="mdi-lock"
           ></v-text-field>
-          <BaseBtn>ログイン</BaseBtn>
+          <BaseBtn @child-btn="signin">ログイン</BaseBtn>
           <v-divider></v-divider>
           <nuxt-link to="signup">会員登録はこちら</nuxt-link>
         </v-form>
@@ -48,15 +48,15 @@ export default {
   data() {
     return {
       user: {
-        name: 'sayapoko',
-        birth_year: 2020,
-        gender: 2,
-        area_id: 1,
+        // name: 'sayapoko',
+        // birth_year: 2020,
+        // gender: 2,
+        // area_id: 1,
         email: 'email@example.com',
         password: 'password',
         password_confirmation: 'password'
       },
-      nameRules: [(value) => !!value || '名前を入力してください'],
+      // nameRules: [(value) => !!value || '名前を入力してください'],
       emailRules: [
         (value) => !!value || 'Emailを入力してください',
         (value) =>
@@ -66,6 +66,27 @@ export default {
           value.indexOf('.') <= value.length - 3 ||
           '有効なドメインを入力してください'
       ]
+    }
+  },
+  methods: {
+    signin() {
+      this.$axios
+        .$post('login', {
+          user: {
+            email: this.user.email,
+            password: this.user.password
+          }
+        })
+        .then((response) => {
+          console.log(response)
+        })
+    },
+    signinauth() {
+      this.$auth.loginWith('local', {
+        data: {
+          user: this.user
+        }
+      })
     }
   }
 }

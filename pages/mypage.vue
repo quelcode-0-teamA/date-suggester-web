@@ -2,18 +2,18 @@
   <div class="root-div">
     <div class="content">
       <div class="inner">
-        <div v-for="date in dates" class="suggest__list">
+        <div v-for="myplan in myplans" class="suggest__list">
           <div class="suggest__list-item">
-            <img :src="date.thumb" />
+            <img :src="myplan.thumb" />
           </div>
           <div class="suggest__list-item">
-            <p>{{ date.title }}</p>
+            <p>{{ myplan.title }}</p>
             <v-chip label
-              ><v-icon left>mdi-map-marker</v-icon>{{ date.area }}</v-chip
+              ><v-icon left>mdi-map-marker</v-icon>{{ myplan.area }}</v-chip
             >
             <br />
             <v-chip label
-              ><v-icon left>mdi-calendar-blank</v-icon>{{ date.day }}</v-chip
+              ><v-icon left>mdi-calendar-blank</v-icon>{{ myplan.day }}</v-chip
             >
           </div>
         </div>
@@ -43,6 +43,18 @@ export default {
         }
       ]
     }
+  },
+  asyncData({ $axios }) {
+    return $axios
+      .$get('mypage/my_plans', {
+        Authorization: 'Bearer ' + 'vLDjuV1hFabyYesjmfZRS8E8'
+      })
+      .then((response) => {
+        console.log(response)
+        return {
+          myplans: response
+        }
+      })
   }
 }
 </script>

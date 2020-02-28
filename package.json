@@ -12,9 +12,12 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@nuxtjs/auth": "^4.8.5",
     "@nuxtjs/axios": "^5.3.6",
+    "cookie-universal-nuxt": "^2.1.2",
     "nuxt": "^2.0.0",
     "v-calendar": "^1.0.1",
+    "vue-multiselect": "^2.1.6",
     "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {
