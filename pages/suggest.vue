@@ -2,7 +2,7 @@
   <div class="root-div">
     <div class="content">
       <div class="inner">
-        <img :src="thumb" class="top__img" />
+        <img :src="suggest.thumb" class="top__img" />
         <div class="suggest">
           <h1>{{ suggest.title }}</h1>
           <p>{{ suggest.description }}</p>
@@ -38,10 +38,16 @@
         </div>
         <div class="btn-wrapper">
           <nuxt-link to="questions2">
-            <v-btn rounded class="elevation-0" outlined>質問に答え直す</v-btn>
+            <v-btn rounded class="elevation-0" outlined color="pink lighten-2"
+              >質問に答え直す</v-btn
+            >
           </nuxt-link>
           <v-spacer></v-spacer>
-          <v-btn @click="" rounded class="elevation-0"
+          <v-btn
+            @click="addMyplan"
+            rounded
+            color="pink lighten-2"
+            class="elevation-0 white--text"
             >このプランを保存する</v-btn
           >
         </div>
@@ -95,32 +101,33 @@ export default {
       .then((response) => {
         console.log(response)
         return {
-          suggest: response
+          suggest: response,
+          dateToken
         }
       })
   },
   methods: {
-    // addMyplan() {
-    //   this.$axios
-    //     .$post(
-    //       `mypage/my_plans`,
-    //       {
-    //         plan: {
-    //           plan_id: this.suggest.id
-    //         }
-    //       },
-    //       {
-    //         headers: {
-    //           Authorization: 'Bearer ' + '8hmQLcYxVwDiCwFXfAF6ALEZ'
-    //           // tokenどうにかする
-    //         }
-    //       }
-    //     )
-    //     .then((response) => {
-    //       console.log(response)
-    //       this.$router.push('/mypage')
-    //     })
-    // }
+    addMyplan() {
+      this.$axios
+        .$post(
+          `mypage/my_plans`,
+          {
+            plan: {
+              plan_id: this.suggest.id
+            }
+          },
+          {
+            headers: {
+              Authorization: 'Bearer ' + this.dateToken
+              // tokenどうにかする
+            }
+          }
+        )
+        .then((response) => {
+          console.log(response)
+          this.$router.push('/mypage')
+        })
+    }
   }
 }
 </script>

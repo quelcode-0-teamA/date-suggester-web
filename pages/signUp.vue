@@ -29,6 +29,7 @@
           <BaseBtn v-on:child-btn="signup">上記内容で新規登録</BaseBtn>
           <v-divider></v-divider>
           <nuxt-link to="signin">ログインはこちら</nuxt-link>
+          {{ $auth.loggedIn }}
         </v-form>
       </div>
     </div>
@@ -39,6 +40,7 @@
 export default {
   data() {
     return {
+      token: this.$cookies.get('datetoken'),
       user: {
         name: 'sayapoko',
         birth_year: 2020,
@@ -60,6 +62,11 @@ export default {
       ]
     }
   },
+  computed: {
+    // dateToken() {
+    //   return
+    // }
+  },
   methods: {
     signup() {
       this.$axios
@@ -74,12 +81,22 @@ export default {
           },
           {
             headers: {
-              Authorization: 'Bearer ' + '8hmQLcYxVwDiCwFXfAF6ALEZ'
+              Authorization: 'Bearer ' + this.token
             }
           }
         )
+        // this.$auth
+        //   .loginWith('local', {
+        //     data: {
+        //       formal_user: {
+        //         email: this.user.email,
+        //         password: this.user.password,
+        //         password_confirmation: this.user.password_confirmation
+        //       }
+        //     }
+        //   })
         .then((response) => {
-          console.log(response)
+          console.log('good job!')
         })
     }
   }

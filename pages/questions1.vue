@@ -136,8 +136,22 @@ export default {
             path: '/',
             maxAge: 60 * 60 * 24 * 7
           })
+          this.$auth.setUserToken(response.token)
+          // this.$auth.loginWith('local', {
+          //   temp_user: {
+          //     birth_year: this.birth_year,
+          //     area_id: this.area.id
+          //   }
+          // })
           this.$router.push('questions2')
         })
+    }
+  },
+  middleware(context) {
+    console.log(context.app.store.$cookies.get('datetoken'))
+    const dateToken = context.app.store.$cookies.get('datetoken')
+    if (dateToken) {
+      return context.redirect('/questions2')
     }
   }
 }

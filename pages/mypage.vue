@@ -44,10 +44,11 @@ export default {
       ]
     }
   },
-  asyncData({ $axios }) {
+  asyncData({ $axios, app }) {
+    const dateToken = app.$cookies.get('datetoken')
     return $axios
       .$get('mypage/my_plans', {
-        Authorization: 'Bearer ' + 'vLDjuV1hFabyYesjmfZRS8E8'
+        Authorization: 'Bearer ' + dateToken
       })
       .then((response) => {
         console.log(response)

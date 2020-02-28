@@ -9,10 +9,13 @@ $color-header: #f3f7fd;
 $color-text: rgba(0,0,0,0.87);
 $color-subtext: rgba(0,0,0, 0.54);
 $color-accent: #ff8587;
+$color-label:#F0FC50;
+$color-pict: #ef5492;
 // 共通部分のスタイル
 .v-application a {
   color: none;
 }
+
 
 body {
   background-color: $color-main2;
@@ -85,7 +88,7 @@ hr {
     display: none;
   }
   input:checked + label {
-    background-color: #ff8587;
+    background-color: $color-main1;
     font-weight: 700;
   }
   label {
@@ -95,7 +98,7 @@ hr {
     align-items: center;
     height: 36px;
     padding: 0 16px;
-    background-color: $color-main2;
+    background-color: $color-label;
     width: 280px;
     border-radius: 18px;
     margin: 24px auto 12px;
@@ -186,4 +189,13 @@ nav {
   max-width: 100%;
   margin: 70px auto 0;
   // text-align: center;
+}
+
+.btn-outlined {
+  color: $color_pict;
+  border-color: $color-pict;
+}
+
+.btn-action {
+  background-color: $color-pict;
 }

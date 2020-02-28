@@ -4,19 +4,19 @@
       <div class="inner">
         <v-stepper v-model="s1" alt-labels class="elevation-0">
           <v-stepper-header class="elevation-0">
-            <v-stepper-step :complete="s1 > 1" step="1"
+            <v-stepper-step :complete="s1 > 1" color="pink lighten-2" step="1"
               ><small>どこでデートする？</small>
             </v-stepper-step>
             <v-divider></v-divider>
-            <v-stepper-step :complete="s1 > 2" step="2"
+            <v-stepper-step :complete="s1 > 2" color="pink lighten-2" step="2"
               ><small>予算はどのくらい？</small>
             </v-stepper-step>
             <v-divider></v-divider>
-            <v-stepper-step :complete="s1 > 3" step="3"
+            <v-stepper-step :complete="s1 > 3" color="pink lighten-2" step="3"
               ><small>デートの時間帯は？</small>
             </v-stepper-step>
             <v-divider></v-divider>
-            <v-stepper-step :complete="s1 > 4" step="4"
+            <v-stepper-step :complete="s1 > 4" color="pink lighten-2" step="4"
               ><small>どんなデートの気分？</small>
             </v-stepper-step>
           </v-stepper-header>
@@ -43,15 +43,13 @@
                   value="1"
                 />
                 <label for="area1"> とおく</label>
-                <p>
-                  {{ answers.date_area }}
-                </p>
+                <p></p>
                 <v-btn
                   @click="forward"
                   :disabled="!answers.date_area"
                   class="elevation-0"
                   rounded
-                  >決定</v-btn
+                  >決定<v-icon>mdi-arrow-right-bold</v-icon></v-btn
                 >
               </form>
             </v-stepper-content>
@@ -84,18 +82,16 @@
                   value="2"
                 />
                 <label for="budget2"> ちょいリッチ</label>
-                <p>
-                  {{ answers.date_budget }}
-                </p>
+                <p></p>
                 <base-btn @child-btn="back" :value="answers.date_budget"
-                  >戻る</base-btn
+                  ><v-icon>mdi-arrow-left-bold</v-icon>戻る</base-btn
                 >
                 <v-btn
                   @click="forward"
                   :disabled="!answers.date_budget"
                   class="elevation-0"
                   rounded
-                  >決定</v-btn
+                  >決定<v-icon>mdi-arrow-right-bold</v-icon></v-btn
                 >
               </form>
             </v-stepper-content>
@@ -128,18 +124,16 @@
                   value="2"
                 />
                 <label for="time2"> 夜デート</label>
-                <p>
-                  {{ answers.date_time }}
-                </p>
+                <p></p>
                 <base-btn @child-btn="back" :value="answers.date_time"
-                  >戻る</base-btn
+                  ><v-icon>mdi-arrow-left-bold</v-icon>戻る</base-btn
                 >
                 <v-btn
                   @click="forward"
                   :disabled="!answers.date_time"
                   class="elevation-0"
                   rounded
-                  >決定</v-btn
+                  >決定<v-icon>mdi-arrow-right-bold</v-icon></v-btn
                 >
               </form>
             </v-stepper-content>
@@ -172,18 +166,19 @@
                   value="2"
                 />
                 <label for="type2"> まったり</label>
-                <p>
-                  {{ answers.date_type }}
-                </p>
-                <base-btn @child-btn="back">戻る</base-btn>
+                <p></p>
+                <base-btn @child-btn="back"
+                  ><v-icon>mdi-arrow-left-bold</v-icon>戻る</base-btn
+                >
                 <nuxt-link to="suggest">
                   <v-btn
                     @click="updateAnswers"
                     :disabled="!answers.date_type"
                     class="elevation-0"
                     rounded
-                    >決定</v-btn
-                  >
+                    >決定
+                    <v-icon>mdi-arrow-right-bold</v-icon>
+                  </v-btn>
                 </nuxt-link>
               </form>
             </v-stepper-content>

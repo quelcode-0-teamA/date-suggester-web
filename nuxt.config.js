@@ -22,7 +22,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#ffff51' },
+  loading: { color: '#fe5492' },
   /*
    ** Global CSS
    */
@@ -45,9 +45,11 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
-    ['cookie-universal-nuxt', { parseJSON: false }]
+    // '@nuxtjs/auth',
+    ['cookie-universal-nuxt', { parseJSON: false }],
+    'nuxt-fontawesome'
   ],
+  // fontawesome
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -94,27 +96,22 @@ export default {
   auth: {
     redirect: {
       login: false,
-      logout: false,
-      home: false
+      logout: '/',
+      home: '/'
     },
     strategies: {
-      localtemp: {
-        _scheme: 'local',
+      local: {
         endpoints: {
-          login: { url: 'temp_sign_up', method: 'post', propertyName: 'token' },
+          login: {
+            url: 'login',
+            method: 'post',
+            propertyName: 'token'
+          },
           logout: false,
           user: { url: `temp_sign_up`, method: 'get', propertyName: 'user' }
         }
         // tokenRequired: true,
         // tokenType: 'bearer'
-      },
-      localformal: {
-        _scheme: 'local',
-        endpoints: {
-          login: { url: 'login', method: 'post', propertyName: 'token' },
-          logout: false,
-          user: { url: `users/`, method: 'get', propertyName: 'user' }
-        }
       }
     }
   }
