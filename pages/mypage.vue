@@ -3,15 +3,21 @@
     <div class="content">
       <div class="inner">
         <div v-for="myplan in myplans" class="suggest__list">
-          <nuxt-link
-            :to="{ name: 'myplans-id', params: { id: myplan.plan.id } }"
-          >
-            <div class="d-flex">
-              <div>
-                <img :src="dates[0].thumb" class="img" />
-              </div>
-              <div class="suggest__list-item">
+          <div class="d-flex">
+            <div>
+              <nuxt-link
+                :to="{ name: 'myplans-id', params: { id: myplan.id } }"
+              >
+                <img :src="myplan.plan.thumb" class="img" />
+              </nuxt-link>
+            </div>
+            <div class="myplans__list-item">
+              <nuxt-link
+                :to="{ name: 'myplans-id', params: { id: myplan.plan.id } }"
+              >
                 <p>{{ myplan.plan.title }}</p>
+              </nuxt-link>
+              <div class="myplans__list-chips">
                 <v-chip label
                   ><v-icon left>mdi-map-marker</v-icon
                   >{{ myplan.plan.area }}</v-chip
@@ -28,7 +34,9 @@
                 >
               </div>
             </div>
-          </nuxt-link>
+            <br />
+          </div>
+          <!-- <v-icon @click="deleteplan">mdi-delete</v-icon> -->
           <!-- <v-btn
             :to="{ name: 'myplans-id', params: { id: `${myplan.plan.id}` } }"
             class="suggest__list-item"
@@ -76,19 +84,6 @@ export default {
         }
       })
   }
-  // asyncData({ $axios, app }) {
-  //   const dateToken = app.$cookies.get('datetoken')
-  //   return $axios
-  //     .$get('mypage/my_plans', {
-  //       Authorization: 'Bearer ' + dateToken
-  //     })
-  //     .then((response) => {
-  //       console.log(response)
-  //       return {
-  //         myplans: response
-  //       }
-  //     })
-  // }
 }
 </script>
 

@@ -34,7 +34,7 @@
                   name="area"
                   value="0"
                 />
-                <label for="area0"> ちかく</label>
+                <label @click="forward" for="area0"> ちかく</label>
                 <input
                   id="area1"
                   v-model="answers.date_area"
@@ -42,15 +42,8 @@
                   name="area"
                   value="1"
                 />
-                <label for="area1"> とおく</label>
+                <label @click="forward" for="area1"> とおく</label>
                 <p></p>
-                <v-btn
-                  @click="forward"
-                  :disabled="!answers.date_area"
-                  class="elevation-0"
-                  rounded
-                  >決定<v-icon>mdi-arrow-right-bold</v-icon></v-btn
-                >
               </form>
             </v-stepper-content>
             <v-stepper-content step="2">
@@ -65,7 +58,7 @@
                   name="budget"
                   value="0"
                 />
-                <label for="budget0"> せつやく</label>
+                <label @click="forward" for="budget0"> せつやく</label>
                 <input
                   id="budget1"
                   v-model="answers.date_budget"
@@ -73,7 +66,7 @@
                   name="budget"
                   value="1"
                 />
-                <label for="budget1"> ふつう</label>
+                <label @click="forward" for="budget1"> ふつう</label>
                 <input
                   id="budget2"
                   v-model="answers.date_budget"
@@ -81,17 +74,10 @@
                   name="budget"
                   value="2"
                 />
-                <label for="budget2"> ちょいリッチ</label>
+                <label @click="forward" for="budget2"> ちょいリッチ</label>
                 <p></p>
                 <base-btn @child-btn="back" :value="answers.date_budget"
                   ><v-icon>mdi-arrow-left-bold</v-icon>戻る</base-btn
-                >
-                <v-btn
-                  @click="forward"
-                  :disabled="!answers.date_budget"
-                  class="elevation-0"
-                  rounded
-                  >決定<v-icon>mdi-arrow-right-bold</v-icon></v-btn
                 >
               </form>
             </v-stepper-content>
@@ -107,7 +93,7 @@
                   name="time"
                   value="0"
                 />
-                <label for="time0"> 一日デート</label>
+                <label @click="forward" for="time0"> 一日デート</label>
                 <input
                   id="time1"
                   v-model="answers.date_time"
@@ -115,7 +101,7 @@
                   name="time"
                   value="1"
                 />
-                <label for="time1"> ランチデート</label>
+                <label @click="forward" for="time1"> ランチデート</label>
                 <input
                   id="time2"
                   v-model="answers.date_time"
@@ -123,17 +109,10 @@
                   name="time"
                   value="2"
                 />
-                <label for="time2"> 夜デート</label>
+                <label @click="forward" for="time2"> 夜デート</label>
                 <p></p>
                 <base-btn @child-btn="back" :value="answers.date_time"
                   ><v-icon>mdi-arrow-left-bold</v-icon>戻る</base-btn
-                >
-                <v-btn
-                  @click="forward"
-                  :disabled="!answers.date_time"
-                  class="elevation-0"
-                  rounded
-                  >決定<v-icon>mdi-arrow-right-bold</v-icon></v-btn
                 >
               </form>
             </v-stepper-content>

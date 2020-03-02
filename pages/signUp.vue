@@ -29,7 +29,6 @@
           <BaseBtn v-on:child-btn="signup">上記内容で新規登録</BaseBtn>
           <v-divider></v-divider>
           <nuxt-link to="signin">ログインはこちら</nuxt-link>
-          {{ $auth.loggedIn }}
         </v-form>
       </div>
     </div>

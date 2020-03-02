@@ -48,8 +48,9 @@ input {
   box-sizing: border-box;
 }
 
-a {
+.v-application a {
   text-decoration: none;
+  color: brack;
 }
 
 img {
@@ -169,14 +170,30 @@ nav {
   }
 }
 
+.myplans{
+  &__list-item{
+    padding: 5px 20px;
+    text-align: left;
+  }
+    &__list-chips {
+      // padding: 20px;
+      display: block;
+      text-align: left;
+  }
+}
 .suggest {
   &__list {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
   }
   &__list-item {
+    // width: 45%;
     margin: 0 auto;
     text-align: left;
+    &:nth-child(odd){
+      margin-left: 10px;
+    }
     img {
       width: 320px;
       max-width: 100%;
@@ -185,13 +202,22 @@ nav {
     }
   }
 }
-
+.delete{
+  width: 50px;
+  height: 50px;
+  display: block;
+  border-radius: 25px;
+  &:hover{
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.1);
+  }
+}
 .btn-wrapper {
   display: flex;
   flex-wrap: wrap;
   width: 700px;
   max-width: 100%;
-  margin: 70px auto 0;
+  margin: 30px auto 0;
   // text-align: center;
 }
 

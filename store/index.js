@@ -12,33 +12,6 @@ export const state = () => ({
     email: 'email@example.com',
     password: 'password'
   },
-  suggestion: {
-    id: 1,
-    title: '猫カフェデート',
-    description: 'にゃんことまったりしたい',
-    area: '吉祥寺',
-    total_budget: '3,000円',
-    time: '3時間30分',
-    thumb: 'URL//image/path/..',
-    spots: [
-      {
-        id: 1,
-        name: 'てまりのおうち',
-        budget: '2,000円',
-        time: '2時間',
-        area: '吉祥寺',
-        thumb: 'URL//image/path/..'
-      },
-      {
-        id: 2,
-        name: 'スターバックス',
-        budget: '600円',
-        time: '1時間30分',
-        area: '吉祥寺',
-        thumb: 'URL//image/path/..'
-      }
-    ]
-  },
   token: '',
   answers: {
     date_area: null,

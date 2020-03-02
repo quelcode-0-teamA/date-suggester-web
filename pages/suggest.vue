@@ -13,9 +13,9 @@
             ><v-icon left>mdi-currency-usd</v-icon>
             {{ suggest.total_budget }}</v-chip
           >
-          <v-chip label
+          <!-- <v-chip label
             ><v-icon left>mdi-clock-outline</v-icon> {{ suggest.time }}</v-chip
-          >
+          > -->
         </div>
         <h2 class="text-left">デートコース</h2>
         <div class="suggest__list">
@@ -23,16 +23,16 @@
             <img :src="aspot.thumb" />
             <div>
               <h3>{{ aspot.name }}</h3>
-              <v-chip label
+              <!-- <v-chip label
                 ><v-icon left>mdi-map-marker</v-icon>{{ aspot.area }}</v-chip
-              >
+              > -->
               <v-chip label
                 ><v-icon left>mdi-currency-usd</v-icon
                 >{{ aspot.budget }}</v-chip
               >
-              <v-chip label
+              <!-- <v-chip label
                 ><v-icon left>mdi-clock-outline</v-icon>{{ aspot.time }}</v-chip
-              >
+              > -->
             </div>
           </div>
         </div>
@@ -124,7 +124,7 @@ export default {
         )
         .then((response) => {
           console.log(response)
-          // this.$router.push('/mypage')
+          this.$router.push('/mypage')
         })
     }
   }

@@ -57,7 +57,7 @@ export default {
   computed: {
     yearOptions() {
       const years = []
-      for (let i = 2010; i > 1930; i--) {
+      for (let i = 1980; i < 2020; i++) {
         years.push(i)
       }
       return years
@@ -136,7 +136,7 @@ export default {
             path: '/',
             maxAge: 60 * 60 * 24 * 7
           })
-          this.$auth.setUserToken(response.token)
+          // this.$auth.setUserToken(response.token)
           // this.$auth.loginWith('local', {
           //   temp_user: {
           //     birth_year: this.birth_year,
