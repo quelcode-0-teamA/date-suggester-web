@@ -44,9 +44,9 @@
             >
           </nuxt-link>
           <v-spacer></v-spacer>
-          <!-- <v-icon @click="deletePlan" class="mt-4 mr-3 delete"
+          <v-icon @click="deletePlan" class="mt-4 mr-3 delete"
             >mdi-delete</v-icon
-          > -->
+          >
         </div>
       </div>
     </div>
@@ -104,21 +104,21 @@ export default {
       })
   },
   methods: {
-    // deletePlan() {
-    //   this.$axios
-    //     .delete(`mypage/my_plans/${this.$route.params.id}`, {
-    //       headers: {
-    //         Authorization: 'Bearer ' + this.token
-    //       }
-    //     })
-    //     .then((response) => {
-    //       console.log(response)
-    //       this.$router.push('/')
-    //     })
-    // },
-    // log() {
-    //   console.log(this.$route)
-    // }
+    deletePlan() {
+      this.$axios
+        .delete(`mypage/my_plans/${this.$route.params.id}`, {
+          headers: {
+            Authorization: 'Bearer ' + this.$cookies.get('datetoken')
+          }
+        })
+        .then((response) => {
+          console.log(response)
+          this.$router.back()
+        })
+    },
+    log() {
+      console.log(this.$route)
+    }
   }
 }
 </script>
