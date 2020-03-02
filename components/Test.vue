@@ -1,8 +1,7 @@
 <template>
-  <v-app class="root-div">
-    <Header />
-    <nuxt />
-  </v-app>
+  <div>
+    <v-btn>btn</v-btn>
+  </div>
 </template>
 
 <script>

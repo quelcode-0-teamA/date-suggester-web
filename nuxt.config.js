@@ -22,15 +22,15 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: '#fe5492' },
   /*
    ** Global CSS
    */
-  css: [],
+  css: [{ src: '~/assets/sass/app.scss', lang: 'scss' }],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/components.js'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -44,13 +44,25 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    // '@nuxtjs/auth',
+    ['cookie-universal-nuxt', { parseJSON: false }],
+    'nuxt-fontawesome'
   ],
+  // fontawesome
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: `https://api-date-suggester-dev.herokuapp.com/v1/`
+    // headers: {
+    //   common: {
+    //     'Content-Type': 'application/json'
+    //     // Authorizaiton: `Bearer ${this.token}`
+    //   }
+    // }
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -58,7 +70,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -80,5 +92,27 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  auth: {
+    redirect: {
+      login: false,
+      logout: '/',
+      home: '/'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: 'login',
+            method: 'post',
+            propertyName: 'token'
+          },
+          logout: false,
+          user: { url: `temp_sign_up`, method: 'get', propertyName: 'user' }
+        }
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+      }
+    }
   }
 }
