@@ -57,7 +57,7 @@ export default {
   computed: {
     yearOptions() {
       const years = []
-      for (let i = 1980; i < 2020; i++) {
+      for (let i = 1965; i < 2005; i++) {
         years.push(i)
       }
       return years
